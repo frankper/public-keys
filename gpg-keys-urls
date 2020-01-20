@@ -1,5 +1,6 @@
 # yubikey gpg key
 https://keybase.io/koulis1984/pgp_keys.asc?fingerprint=5de1fc59303a7db59b26bd57a59e931a849979fc
-# work gpg key 
+# gpg-keycard-001 gpg key 
 https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x5faddad63d31b26a
-
+# gpg-keycard-002 gpg key 
+https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x1E81E951285219B0
