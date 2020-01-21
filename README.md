@@ -16,8 +16,8 @@ curl -sSL https://raw.githubusercontent.com/frankper/public-keys/master/authoriz
 curl -sSL https://keybase.io/koulis1984/pgp_keys.asc?fingerprint=5de1fc59303a7db59b26bd57a59e931a849979fc | gpg --import -
 # gpg card 001 
 curl -sSL https://keyserver.ubuntu.com/pks/lookup\?op\=get\&search\=0x5faddad63d31b26a | gpg --import -
-# gpg card 001 
-curl -sSL https://keyserver.ubuntu.com/pks/lookup\?op\=get\&search\=0x1E81E951285219B0 | gpg --import -
+# gpg card 002
+# gpg card 003.v2-v3
 ```
 ### From github repo
 ```shell
@@ -27,5 +27,7 @@ curl -sSL https://raw.githubusercontent.com/frankper/public-keys/master/frank.pe
 curl -sSL https://raw.githubusercontent.com/frankper/public-keys/master/frank.perrakis.gpg001.asc | gpg --import -
 # gpg card 002 
 curl -sSL https://raw.githubusercontent.com/frankper/public-keys/master/frank.perrakis.gpg002.asc | gpg --import -
+# gpg card 003 
+curl -sSL https://raw.githubusercontent.com/frankper/public-keys/master/frank.perrakis.gpg003.v2-v3.asc | gpg --import -
 ```
 
