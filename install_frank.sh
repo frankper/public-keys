@@ -46,6 +46,25 @@ for key in ${gpgKeyNames[@]}; do
 done 
 }
 
+gpg_keys_ubuntu () {
+colorprintf red "Installing All GPG Keys"
+for ubuntu in ${gpgKeyUbuntu[@]}; do 
+  curl -sSL https://keyserver.ubuntu.com/pks/lookup?op=get&search=${ubuntu} | gpg --import -
+done 
+}
+
+display_help() {
+    echo "Usage: $0 [option...] " >&2
+    echo
+    echo "   -a, --all        install all gpp and ssh keys "
+    echo "   -s, --ssh        install only ssh keys "
+    echo "   -g, --gpg        install only gpg keys from gitlab repo "
+    echo "   -u, --ubuntu     Install only gpg keys from keyservers "
+    echo
+    # echo some stuff here for the -a or --add-options 
+    exit 1
+}
+
 # set script name below 
 pick_name="Script to install Frank's ssh/gpg keys"
 colorprintf orange "Running $pick_name"
@@ -53,27 +72,38 @@ colorprintf orange "Running $pick_name"
 declare -a dependencies=(curl wget gpg)
 # declare gpg key names
 declare -a gpgKeyNames=(gpg001 gpg002 yubikey gpg003.v2-v3)
+# declare gpg key names from ubuntu servers
+declare -a gpgKeyUbuntu=(0x1e81e951285219b0 0x5faddad63d31b26a 0x1e81e951285219b0 0x1ebbdb2a2fe0dc7d)
 
 while [ ! $# -eq 0 ]
 do
-	case "$1" in
-		--ssh | -s)
+  case "$1" in
+    --ssh | -s)
       check_dependencies
       ssh_auth_keys
-			exit
-			;;
-		--gpg | -g)
+      exit
+      ;;
+    --gpg | -g)
       check_dependencies
       gpg_keys
-			exit
-			;;
-    	---all | -a)
+      exit
+      ;;
+    --all | -a)
       check_dependencies
       ssh_auth_keys
       gpg_keys
-			exit
-			;;
-	esac
-	shift
+      exit
+      ;;
+    --ubuntu | -u)
+      check_dependencies
+      gpg_keys_ubuntu
+      exit
+      ;;
+    --help | -h)
+      display_help
+      exit
+      ;;
+  esac
+shift
 done
 colorprintf green "$pick_name Done"
